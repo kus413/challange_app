@@ -5,14 +5,11 @@ import 'services.dart';
 class UserProvider with ChangeNotifier {
   List<Users> _userList;
 
-  //set users from json
-  void setUsers(List<Users> usersList) {
-    _userList = usersList;
-  }
-
-  //return complete users
-  List<Users> get users {
-    return [..._userList];
+  Future<List<Users>> getUsers() async {
+    List<Users> loadedUsers = await Services.getUsers();
+    _userList = loadedUsers;
+    notifyListeners();
+    return loadedUsers;
   }
 
   //return specific user

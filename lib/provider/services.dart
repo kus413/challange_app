@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:http/http.dart' as http;
 import 'user_json.dart';
 
@@ -6,11 +8,11 @@ class Services {
   static Future<List<Users>> getUsers() async {
     try {
       final response = await http.get(url);
-      if (response.statusCode == 200) {
+      if (response.statusCode != 200) {
         final List<Users> users = usersFromJson(response.body);
         return users;
       } else {
-        return [];
+        throw HttpException("Could not load data");
       }
     } catch (e) {
       throw e;
