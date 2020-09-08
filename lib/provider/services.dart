@@ -8,7 +8,7 @@ class Services {
   static Future<List<Users>> getUsers() async {
     try {
       final response = await http.get(url);
-      if (response.statusCode != 200) {
+      if (response.statusCode == 200) {
         final List<Users> users = usersFromJson(response.body);
         return users;
       } else {

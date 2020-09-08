@@ -31,9 +31,12 @@ class _UserListScreenState extends State<UserListScreen> {
                   ),
                 )
               : Scaffold(
-                  appBar: AppBar(title: Text("Users")),
+                  appBar: AppBar(
+                    title: Text("Users"),
+                    backgroundColor: Color.fromRGBO(90, 54, 115, 1),
+                  ),
                   body: Container(
-                    color: Colors.black26,
+                    color: Color.fromRGBO(255, 102, 140, 0.4),
                     height: MediaQuery.of(context).size.height * 1,
                     child: snapshot.hasError
                         ? Center(
